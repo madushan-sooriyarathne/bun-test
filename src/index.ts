@@ -8,6 +8,7 @@ const app = new Elysia()
       data: null,
     };
   })
+  .get("/", () => "Helloworld from Bun")
   .listen(3000);
 
 console.log(
