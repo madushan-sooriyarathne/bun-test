@@ -1,8 +1,17 @@
 import { Elysia } from "elysia";
 
 const app = new Elysia()
-  .post("/", ({ body }) => {
-    console.log(body);
+  .post("/", ({ body, set }) => {
+    const params = `?${new URLSearchParams(
+      body as Record<string, string>,
+    ).toString()}`;
+
+    console.log(params);
+
+    // redirect to the frontend
+
+    set.redirect = `https://rapid-payment-test.vercel.app/payment${params}`;
+
     return {
       status: "success",
       data: null,
